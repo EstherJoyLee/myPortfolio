@@ -1,6 +1,8 @@
 export const videos = {
   bgVideo: require("@/resources/images/main/bg.mp4"),
   loopVideo: require("@/resources/images/main/loop.mp4"),
+  pinkRabbit: require("@/resources/images/main/pinkRabbit.mp4"),
+  prosNcons: require("@/resources/images/main/prosNcons.mp4"),
 };
 
 export const images = {
