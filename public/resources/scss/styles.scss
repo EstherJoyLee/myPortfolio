@@ -1,0 +1,14 @@
+@charset "UTF-8";
+@import "reset";
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+body {
+  background-color: #000;
+  font: 17px/1.4 "orbitron", sans-serif;
+  letter-spacing: 1px;
+  color: #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

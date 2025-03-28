@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&family=Titan+One&display=swap");
+
+@keyframes bounce {
+  100% {
+    transform: translateY(-20%);
+  }
+}
+
+.keyResWrapper {
+  width: 100%;
+}
+
+.keyResSticky {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.stickyBackground {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8vw;
+}
+
+.cardFrame {
+  position: absolute;
+  width: 90vw;
+  height: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card {
+  width: 24%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: perspective(100vw) translateX(100vw) rotateY(180deg);
+  transition: transform 0.1s;
+}
+.card:hover {
+  transform: perspective(100vw) translateX(0vw) rotateY(180deg) !important;
+  transition: 0.4s;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  backface-visibility: hidden;
+  padding: 2.8vh;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(12px, 2vh, 28px);
+  word-break: auto-phrase;
+
+  .hover {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: clamp(12px, 2vh, 18px);
+    word-break: break-word;
+    color: white;
+    animation: rotateBlink 1.5s infinite;
+  }
+
+  @keyframes rotateBlink {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.back {
+  transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  font-size: clamp(10px, 1vw, 28px);
+  display: grid;
+  align-items: center;
+  text-align: center;
+  word-break: auto-phrase;
+}
+
+@media screen and (orientation: portrait) {
+  .cardFrame {
+    display: grid;
+    height: initial;
+    width: initial;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5vh;
+    justify-items: center;
+  }
+
+  .card {
+    width: 35vw;
+    height: 20vh;
+  }
+  .front,
+  .back {
+    padding: 2.8vw;
+  }
+  .front {
+    font-size: clamp(16px, 4vw, 44px);
+  }
+  .back {
+    font-size: clamp(10px, 2.8vw, 21px);
+  }
+}

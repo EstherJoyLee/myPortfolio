@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.playerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* 어두운 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.playerWrapper .playerContent {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px;
+}
+.playerWrapper .playerContent .player {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* 16:9 비율 유지 */
+  overflow: hidden;
+}
+.playerWrapper .playerContent .player .video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.playerWrapper .playerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.playerWrapper .playerTop .keyword {
+  font-size: 20px;
+}
+.playerWrapper .playerTop .button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}/*# sourceMappingURL=Player.module.css.map */

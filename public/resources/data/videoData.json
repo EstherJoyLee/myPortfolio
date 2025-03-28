@@ -1,0 +1,237 @@
+{
+  "T치고는 공감을 잘함": {
+    "videoId": "jyj",
+    "timestamp": 25,
+    "isPortrait": true
+  },
+  "웃상": {
+    "videoId": "jyj",
+    "timestamp": 35,
+    "isPortrait": true
+  },
+  "굳건한 마음": {
+    "videoId": "jyj",
+    "timestamp": 35,
+    "isPortrait": true
+  },
+  "도전 정신": {
+    "videoId": "kbr",
+    "timestamp": 63,
+    "isPortrait": true
+  },
+  "늘 성장함": {
+    "videoId": "kbr",
+    "timestamp": 75,
+    "isPortrait": true
+  },
+  "감정적으로 행동하지 않음": {
+    "videoId": "kbr",
+    "timestamp": 120,
+    "isPortrait": true
+  },
+  "의리있음": {
+    "videoId": "oes",
+    "timestamp": 1,
+    "isPortrait": true
+  },
+  "성실함": {
+    "videoId": "oes",
+    "timestamp": 4,
+    "isPortrait": true
+  },
+  "꼼꼼하고 계획적임": {
+    "videoId": "pjy",
+    "timestamp": 13,
+    "isPortrait": true
+  },
+  "배려를 잘함": {
+    "videoId": "pjy",
+    "timestamp": 15,
+    "isPortrait": true
+  },
+  "예쁨": {
+    "videoId": "pjy",
+    "timestamp": 15,
+    "isPortrait": true
+  },
+  "웃는게 예쁨": {
+    "videoId": "sian",
+    "timestamp": 0,
+    "isPortrait": true
+  },
+  "따뜻한 T": {
+    "videoId": "sian",
+    "timestamp": 10,
+    "isPortrait": true
+  },
+  "말을 조리있게 함": {
+    "videoId": "sian",
+    "timestamp": 11,
+    "isPortrait": true
+  },
+  "생각 정리 잘함": {
+    "videoId": "sian",
+    "timestamp": 12,
+    "isPortrait": true
+  },
+  "말을 예쁘게 함": {
+    "videoId": "sian",
+    "timestamp": 14,
+    "isPortrait": true
+  },
+  "경청을 잘함": {
+    "videoId": "sian",
+    "timestamp": 20,
+    "isPortrait": true
+  },
+  "어른스러움": {
+    "videoId": "sian",
+    "timestamp": 30,
+    "isPortrait": true
+  },
+  "자기객관화 잘 됨": {
+    "videoId": "sian",
+    "timestamp": 50,
+    "isPortrait": true
+  },
+  "밝고 긍정적임": {
+    "videoId": "sjh",
+    "timestamp": 5,
+    "isPortrait": true
+  },
+  "햇살 같음": {
+    "videoId": "sjh",
+    "timestamp": 17,
+    "isPortrait": true
+  },
+  "둥글둥글함": {
+    "videoId": "sjh",
+    "timestamp": 17,
+    "isPortrait": true
+  },
+  "빠른 속도와 높은 완성도": {
+    "videoId": "yjh",
+    "timestamp": 2,
+    "isPortrait": true
+  },
+  "소통 능력": {
+    "videoId": "yjh",
+    "timestamp": 8,
+    "isPortrait": true
+  },
+  "친화력": {
+    "videoId": "yjh",
+    "timestamp": 40,
+    "isPortrait": true
+  },
+  "상황이나 감정에 휩쓸리지 않음": {
+    "videoId": "jsh",
+    "timestamp": 15,
+    "isPortrait": false
+  },
+  "항상 밝고 명랑함": {
+    "videoId": "jsh",
+    "timestamp": 20,
+    "isPortrait": false
+  },
+  "책임감이 강함": {
+    "videoId": "jsh",
+    "timestamp": 30,
+    "isPortrait": false
+  },
+  "끊임 없이 앞으로 나아감": {
+    "videoId": "kyh_khs",
+    "timestamp": 6,
+    "isPortrait": false
+  },
+  "따뜻하고 포용력 있음": {
+    "videoId": "kyh_khs",
+    "timestamp": 35,
+    "isPortrait": false
+  },
+  "의사표현이 확실함": {
+    "videoId": "kyh_khs",
+    "timestamp": 42,
+    "isPortrait": false
+  },
+  "체력이 약함": {
+    "videoId": "cds",
+    "timestamp": 40,
+    "isPortrait": true
+  },
+  "혼자 짊어짐": {
+    "videoId": "cds",
+    "timestamp": 51,
+    "isPortrait": true
+  },
+  "불완전한 공감": {
+    "videoId": "jyj",
+    "timestamp": 50,
+    "isPortrait": true
+  },
+  "감정을 드러내지 않음": {
+    "videoId": "kbr",
+    "timestamp": 75,
+    "isPortrait": true
+  },
+  "완벽주의": {
+    "videoId": "oes",
+    "timestamp": 4,
+    "isPortrait": true
+  },
+  "본인에 대한 기준 높음": {
+    "videoId": "oes",
+    "timestamp": 4,
+    "isPortrait": true
+  },
+  "자기를 과소평가함": {
+    "videoId": "sian",
+    "timestamp": 56,
+    "isPortrait": true
+  },
+  "하나에 꽂히면 다른거 못 봄": {
+    "videoId": "sian",
+    "timestamp": 63,
+    "isPortrait": true
+  },
+  "스스로에게 엄격함": {
+    "videoId": "sian",
+    "timestamp": 67,
+    "isPortrait": true
+  },
+  "많이 못 먹음": {
+    "videoId": "sian",
+    "timestamp": 66,
+    "isPortrait": true
+  },
+  "생각이 많음": {
+    "videoId": "sian",
+    "timestamp": 72,
+    "isPortrait": true
+  },
+  "자기만의 선이 있음": {
+    "videoId": "sjh",
+    "timestamp": 25,
+    "isPortrait": true
+  },
+  "관계 유지 까다로움": {
+    "videoId": "sjh",
+    "timestamp": 23,
+    "isPortrait": true
+  },
+  "일에 너무 진심": {
+    "videoId": "yjh",
+    "timestamp": 54,
+    "isPortrait": true
+  },
+  "목소리 때문에 귀가 아픔": {
+    "videoId": "jsh",
+    "timestamp": 60,
+    "isPortrait": false
+  },
+  "자기만의 선이 확실": {
+    "videoId": "kyh_khs",
+    "timestamp": 49,
+    "isPortrait": false
+  }
+}

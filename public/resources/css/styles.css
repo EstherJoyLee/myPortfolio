@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+/* 📌 전체 스크롤바 크기 조정 */
+::-webkit-scrollbar {
+  width: 4px; /* 세로 스크롤 두께 */
+  height: 4px; /* 가로 스크롤 두께 */
+}
+
+/* 📌 스크롤바 트랙 (배경) */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* 어두운 반투명 */
+  border-radius: 10px;
+}
+
+/* 📌 스크롤바 핸들 (움직이는 부분) */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6); /* 밝은 그라데이션 */
+  border-radius: 10px;
+}
+
+/* 📌 마우스 호버 시 색상 변경 */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  outline: 0;
+  text-decoration: none;
+}
+
+img {
+  border: 0;
+  display: block;
+}
+
+body {
+  background-color: #000;
+  font: 17px/1.4 "orbitron", sans-serif;
+  letter-spacing: 1px;
+  color: #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+} /*# sourceMappingURL=styles.css.map */

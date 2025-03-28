@@ -1,0 +1,71 @@
+.playerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* 어두운 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  .playerContent {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    padding: 10px;
+    width: 90%;
+
+    .player {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 56.25%; /* 16:9 비율 유지 */
+      overflow: hidden;
+      .video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    }
+    .playerPortrait {
+      width: 100%;
+      padding-top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .playerTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .keyword {
+      font-size: clamp(14px, 2vh, 20px);
+      padding-right: 40px;
+    }
+    .button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .playerWrapper {
+    .playerContent {
+      .playerPortrait {
+        padding-top: 150%;
+      }
+    }
+  }
+}
