@@ -1,6 +1,6 @@
 export const videos = {
   bgVideo: require("@/resources/images/main/bg.mp4"),
-  fc4Video: require("@/resources/images/main/prosNcons.mp4"),
+  loopVideo: require("@/resources/images/main/loop.mp4"),
 };
 
 export const images = {
