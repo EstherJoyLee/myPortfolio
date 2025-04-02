@@ -45,7 +45,7 @@ export default function useDragRotation(
       requestRef.current = requestAnimationFrame(smoothRotation);
     } else {
       if (options.autoRotate && !isHovering.current) {
-        // autoRotate();
+        autoRotate();
       }
     }
   };
@@ -104,7 +104,7 @@ export default function useDragRotation(
     const onMouseLeave = () => {
       isHovering.current = false;
       if (options.autoRotate && !isDragging) {
-        // autoRotate();
+        autoRotate();
       }
     };
 
@@ -119,9 +119,9 @@ export default function useDragRotation(
     el.addEventListener("touchend", onTouchEnd);
 
     // ✅ 처음 진입 시 자동 회전 시작
-    // if (options.autoRotate) {
-    // autoRotate();
-    // }
+    if (options.autoRotate) {
+      autoRotate();
+    }
 
     return () => {
       el.removeEventListener("mouseenter", onMouseEnter);

@@ -81,7 +81,7 @@ const Main = () => {
                 <li>
                   <button
                     className={styles.consBtn}
-                    onClick={() => openModal(ProsNCons, { jsonData: "const" })}
+                    onClick={() => openModal(ProsNCons, { jsonData: "cons" })}
                   >
                     Cons
                   </button>
