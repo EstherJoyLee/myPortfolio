@@ -3,7 +3,6 @@ import ForceGraph2D from "react-force-graph-2d";
 import { forceCollide, forceRadial, forceManyBody } from "d3-force";
 import Player from "@/components/Player/Player"; // ✅ Player 컴포넌트 추가
 import Loader from "../Loader/Loader";
-import styles from "./ProsNCons.module.scss";
 
 interface ProsNConsProps {
   jsonData: any;
@@ -12,10 +11,8 @@ interface ProsNConsProps {
 const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const fgRef = useRef<any>(null);
-  const { r, g, b, a } =
-    jsonData === "pros"
-      ? { r: 0, g: 255, b: 255, a: 0.2 }
-      : { r: 255, g: 0, b: 255, a: 0.2 };
+  const { r, g, b } =
+    jsonData === "pros" ? { r: 0, g: 255, b: 255 } : { r: 255, g: 0, b: 255 };
 
   const nodeSize = 30; // ✅ 노드 사이즈를 정의
 

@@ -154,6 +154,16 @@
     "timestamp": 42,
     "isPortrait": false
   },
+  "시야가 넓고 꼼꼼함": {
+    "videoId": "jsj_lhe",
+    "timestamp": 5,
+    "isPortrait": false
+  },
+  "사람 파악 잘함": {
+    "videoId": "jsj_lhe",
+    "timestamp": 32,
+    "isPortrait": false
+  },
   "체력이 약함": {
     "videoId": "cds",
     "timestamp": 40,
@@ -232,6 +242,11 @@
   "자기만의 선이 확실": {
     "videoId": "kyh_khs",
     "timestamp": 49,
+    "isPortrait": false
+  },
+  "정직해서 타협 안함": {
+    "videoId": "jsj_lhe",
+    "timestamp": 13,
     "isPortrait": false
   }
 }
