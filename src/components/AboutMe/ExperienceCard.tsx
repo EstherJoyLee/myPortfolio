@@ -17,9 +17,11 @@ const ExperienceCard = ({
         {emoji && `${emoji} `}
         {title}
       </h3>
-      {lines.map((line, i) => (
-        <p key={i}>{line}</p>
-      ))}
+      <ul>
+        {lines.map((line, i) => (
+          <li key={i}>{line}</li>
+        ))}
+      </ul>
     </div>
   );
 };
