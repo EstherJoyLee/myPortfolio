@@ -35,7 +35,7 @@ my portfolio는 React 기반의 인터랙티브한 구성으로, 자기소개부
 ## 🚀 배포 정보
 배포 플랫폼: Vercel
 
-🔗 Live Site: pink-rabbit-portfolio.vercel.app
+🔗 Live Site: [pink-rabbit-portfolio.vercel.app](https://pink-rabbit-portfolio.vercel.app/)
 
 ---
 
