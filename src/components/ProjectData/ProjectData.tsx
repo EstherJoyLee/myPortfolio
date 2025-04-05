@@ -20,6 +20,7 @@ interface ProjectDataProps {
     name: string;
     progressPeriod: string;
     liveDemoUrl: string;
+    testBlogUrl?: string;
     mobileLiveDemoUrl?: string;
     gitRepositoryUrl?: string | null;
   };
@@ -44,7 +45,7 @@ const joylog: ProjectDataProps = {
     name: "JoyLog",
     progressPeriod: "2025.01 ~ 2025.03",
     liveDemoUrl: "https://joylog.vercel.app/",
-    testBLogUrl: "https://joylog.vercel.app/blog/bonjourjj3",
+    testBlogUrl: "https://joylog.vercel.app/blog/bonjourjj3",
     gitRepositoryUrl: "https://github.com/EstherJoyLee/blog",
   },
   technologyStack: {
