@@ -42,8 +42,9 @@ interface ProjectDataProps {
 const joylog: ProjectDataProps = {
   project: {
     name: "JoyLog",
-    progressPeriod: "2024.01 ~ 2025.02",
+    progressPeriod: "2025.01 ~ 2025.03",
     liveDemoUrl: "https://joylog.vercel.app/",
+    testBLogUrl: "https://joylog.vercel.app/blog/bonjourjj3",
     gitRepositoryUrl: "https://github.com/EstherJoyLee/blog",
   },
   technologyStack: {
