@@ -7,7 +7,7 @@ interface Props {
     name: string;
     progressPeriod: string;
     liveDemoUrl: string;
-    testBLogUrl?: string;
+    testBlogUrl?: string;
     mobileLiveDemoUrl?: string;
     gitRepositoryUrl?: string | null;
   };
@@ -24,8 +24,8 @@ export default function SectionIntro({ projectId, project }: Props) {
           <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
             <i>🔗</i> Live Demo
           </a>
-          {project.testBLogUrl ? (
-            <a href={project.testBLogUrl} target="_blank" rel="noreferrer">
+          {project.testBlogUrl ? (
+            <a href={project.testBlogUrl} target="_blank" rel="noreferrer">
               <i>🔗</i>Test BLog Live Demo
             </a>
           ) : (
