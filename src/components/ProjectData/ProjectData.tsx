@@ -318,7 +318,7 @@ const solutionSystem: ProjectDataProps = {
     },
     {
       front: "타 부서와의 긴밀한 커뮤니케이션",
-      back: "기획자, 백엔드 개발자와의 실시간 커뮤니케이션을 통해 요구사항 조율 및 에러 없는 기능 구현현",
+      back: "기획자, 백엔드 개발자와의 실시간 커뮤니케이션을 통해 요구사항 조율 및 에러 없는 기능 구현",
     },
   ],
   mainFeatures: [
@@ -361,7 +361,7 @@ const solutionSystem: ProjectDataProps = {
       desc: [
         "사용자가 직접 청약 자격 여부를 사전 점검",
         "청약 자격 DB화를 통한 마케팅 활용 가능",
-        "부적격자 사전 필터링 가능능",
+        "부적격자 사전 필터링 가능",
       ],
     },
   ],
