@@ -17,7 +17,7 @@ const Profile = () => {
       <div className={styles.profileRight}>
         <h1>Juhee Lee</h1>
         <p className={styles.jobTitle}>
-          실무 감각과 성장성을 겸비한 프론트엔드 입문자
+          I don’t just build interfaces—I shape their meaning.
         </p>
         <ul className={styles.contactList}>
           <li>📧 bonjourjj3@gmail.com</li>
