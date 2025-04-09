@@ -35,7 +35,7 @@ const AboutMe = () => {
         <h2>💡 개발 철학</h2>
         <ul>
           <li>
-            마크업은 브라우저가 이해할 수 있어야 하지만 결국국 사람을 위한
+            마크업은 브라우저가 이해할 수 있어야 하지만 결국 사람을 위한
             것이라고 생각합니다. 사용자 눈높이에서 구조와 user flow를 설계하려고
             합니다.
           </li>
@@ -64,7 +64,7 @@ const AboutMe = () => {
             ]}
           />
           <ExperienceCard
-            title="캄보디아 대학생 HTML/CSS/JavaScript 워크숍"
+            title="라오스 대학생 HTML/CSS/JavaScript 워크숍"
             emoji="👩🏻‍💻"
             lines={[
               "6개월간 매주 토요일, 온라인 수업 운영",
