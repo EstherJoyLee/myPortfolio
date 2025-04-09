@@ -40,7 +40,13 @@ const Main = () => {
             <div>
               <h3>PINKRABBIT</h3>
               <div className={styles.pic}>
-                <video src={videos.pinkRabbit} muted autoPlay loop></video>
+                <video
+                  src={videos.pinkRabbit}
+                  preload="auto"
+                  muted
+                  autoPlay
+                  loop
+                ></video>
               </div>
               <h2>Who's PinkRabbit?</h2>
               <button
