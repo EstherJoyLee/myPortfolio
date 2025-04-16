@@ -193,52 +193,6 @@ const Main = () => {
             </div>
           </div>
         </article>
-
-        {/* face8 */}
-        {/* <article
-          className={styles.face8}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 0)}
-        >
-          <h1>Contact</h1>
-          <div className={styles.inner}>
-            <div>
-              <p>
-                <i className="fab fa-android"></i>
-              </p>
-              <h2>Android</h2>
-            </div>
-            <div>
-              <p>
-                <i className="fab fa-apple"></i>
-              </p>
-              <h2>Apple</h2>
-            </div>
-            <div>
-              <p>
-                <i className="fab fa-twitter-square"></i>
-              </p>
-              <h2>Twitter</h2>
-            </div>
-            <div>
-              <p>
-                <i className="fab fa-facebook-square"></i>
-              </p>
-              <h2>Facebook</h2>
-            </div>
-            <div>
-              <p>
-                <i className="fab fa-youtube"></i>
-              </p>
-              <h2>Youtube</h2>
-            </div>
-            <div>
-              <p>
-                <i className="fab fa-google-play"></i>
-              </p>
-              <h2>Google</h2>
-            </div>
-          </div>
-        </article> */}
       </section>
       <ModalWrapper />
     </main>
