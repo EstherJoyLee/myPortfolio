@@ -111,6 +111,7 @@ const Main = () => {
                   PinkRabbit's <br /> Portfolio
                 </h2>
                 <ul>
+                  <li>CLEF</li>
                   <li>JoyLog</li>
                   <li>Nexmedia</li>
                   <li>법무법인선린</li>
