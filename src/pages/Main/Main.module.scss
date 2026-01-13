@@ -26,6 +26,7 @@
     margin-top: -400px;
     transform-style: preserve-3d;
     // animation: rotate linear 30s infinite;
+    pointer-events: none;
 
     &:active {
       cursor: grabbing;
@@ -37,6 +38,7 @@
       position: absolute;
       top: 0px;
       left: 0px;
+      pointer-events: auto;
 
       h1 {
         position: absolute;
