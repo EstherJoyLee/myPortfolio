@@ -1,0 +1,16 @@
+.closeButton {
+  position: absolute;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  z-index: 99;
+}
+.closeButton:hover {
+  background: darkred;
+}/*# sourceMappingURL=CloseButton.module.css.map */

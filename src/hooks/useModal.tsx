@@ -1,34 +1,42 @@
 import { useState, useCallback } from "react";
 import Modal from "@/components/Modal/Modal";
 
+interface ModalStackItem {
+  component: React.FC<any>;
+  props: any;
+}
+
 const useModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [Component, setComponent] = useState<React.FC<any> | null>(null);
-  const [componentProps, setComponentProps] = useState<any>({});
+  const [modalStack, setModalStack] = useState<ModalStackItem[]>([]);
 
   const openModal = useCallback(
     (NewComponent: React.FC<any>, props: any = {}) => {
-      setComponent(() => NewComponent);
-      setComponentProps(props);
-      setIsOpen(true);
+      setModalStack((prev) => [...prev, { component: NewComponent, props }]);
     },
-    []
+    [],
   );
 
   const closeModal = useCallback(() => {
-    setIsOpen(false);
-    setTimeout(() => {
-      setComponent(null);
-      setComponentProps({});
-    }, 300);
+    setModalStack((prev) => {
+      if (prev.length === 0) return prev;
+      return prev.slice(0, -1);
+    });
   }, []);
+
+  // 현재 표시할 모달 (스택의 마지막 항목)
+  const currentModal = modalStack[modalStack.length - 1];
+  const isOpen = modalStack.length > 0;
 
   // ✅ JSX에서 <ModalWrapper /> 로 쓸 수 있도록 함수형 컴포넌트로 반환
   const ModalWrapper = () => {
-    if (!isOpen || !Component) return null;
+    if (!isOpen || !currentModal) return null;
     return (
       <Modal onClose={closeModal}>
-        <Component {...componentProps} />
+        <currentModal.component
+          {...currentModal.props}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
       </Modal>
     );
   };

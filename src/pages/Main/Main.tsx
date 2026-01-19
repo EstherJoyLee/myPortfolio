@@ -6,16 +6,16 @@ import ProsNCons from "@/components/ProsNCons/ProsNCons";
 import Project from "@/components/Project/Project";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import useDragRotation from "@/hooks/useDragRotation";
+import CLEFModal from "@/components/CLEFModal";
 
 const Main = () => {
-  const circleRef = useRef<HTMLDivElement | null>(null); // circle 요소에 대한 ref
+  const circleRef = useRef<HTMLDivElement | null>(null);
   const { openModal, ModalWrapper, isOpen } = useModal()!;
   const { rotation } = useDragRotation(circleRef, {
-    autoRotate: !isOpen, // 모달이 열렸을 때는 자동 회전 중단
+    autoRotate: !isOpen,
   });
-  const articleRefs = useRef<(HTMLDivElement | null)[]>([]); // article 요소들을 위한 ref 배열
+  const articleRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // 각 article에 ref를 할당하는 함수
   const setArticleRef = (el: HTMLDivElement | null, index: number) => {
     if (el) {
       articleRefs.current[index] = el;
@@ -25,15 +25,16 @@ const Main = () => {
   return (
     <main className={styles.wrap}>
       <video src={videos.bgVideo} loop muted autoPlay></video>
+
       <section
         id={styles.circle}
         ref={circleRef}
         style={{ transform: `rotateY(${rotation}deg)` }}
       >
-        {/* face1 완료*/}
+        {/* face1 */}
         <article
           className={styles.face1}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 4)}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 0)}
         >
           <h1>Profile</h1>
           <div className={styles.inner}>
@@ -50,7 +51,7 @@ const Main = () => {
               </div>
               <h2>Who's PinkRabbit?</h2>
               <button
-                onClick={(e) => {
+                onClick={() => {
                   openModal(AboutMe);
                 }}
               >
@@ -68,7 +69,7 @@ const Main = () => {
         {/* face2 */}
         <article
           className={styles.face2}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 3)}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 1)}
         >
           <h1>Pros & Cons</h1>
           <div className={styles.inner}>
@@ -100,7 +101,7 @@ const Main = () => {
         {/* face3 */}
         <article
           className={styles.face3}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 6)}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 2)}
         >
           <h1>Portfolio</h1>
           <div className={styles.inner}>
@@ -121,10 +122,33 @@ const Main = () => {
             </div>
           </div>
         </article>
-        {/* face4 - JoyLog */}
+
+        {/* face4 - CLEF */}
         <article
           className={styles.face4}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 1)}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 3)}
+          onClick={() => openModal(CLEFModal, { openModal })}
+          style={{ cursor: "pointer" }}
+        >
+          <h1>
+            CLEF <span>[2025.01 - 현재]</span>
+          </h1>
+          <div className={styles.inner}>
+            <div className={styles.projectLink}>
+              <button onClick={() => openModal(CLEFModal, { openModal })}>
+                CLEF
+              </button>
+              <p>🎵 CLEF에서 진행한 다양한 프로젝트</p>
+            </div>
+          </div>
+        </article>
+
+        {/* face5 - JoyLog */}
+        <article
+          className={styles.face5}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 4)}
+          onClick={() => openModal(Project, { projectId: "joylog" })}
+          style={{ cursor: "pointer" }}
         >
           <h1>
             JoyLog <span>[개인프로젝트]</span>
@@ -140,10 +164,13 @@ const Main = () => {
             </div>
           </div>
         </article>
-        {/* face5 - Nexmedia */}
+
+        {/* face6 - NEXMEDIA */}
         <article
-          className={styles.face5}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 7)}
+          className={styles.face6}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 5)}
+          onClick={() => openModal(Project, { projectId: "solutionSystem" })}
+          style={{ cursor: "pointer" }}
         >
           <h1>
             Nexmedia <span>[2020.03 - 2023.03]</span>
@@ -175,10 +202,13 @@ const Main = () => {
             </div>
           </div>
         </article>
-        {/* face6 - 법무법인선린 */}
+
+        {/* face7 - 법무법인선린 */}
         <article
-          className={styles.face6}
-          ref={(el) => setArticleRef(el as HTMLDivElement, 5)}
+          className={styles.face7}
+          ref={(el) => setArticleRef(el as HTMLDivElement, 6)}
+          onClick={() => openModal(Project, { projectId: "sunlin" })}
+          style={{ cursor: "pointer" }}
         >
           <h1>
             법무법인선린 <span>[2024.05 - 2024.08]</span>
@@ -195,6 +225,7 @@ const Main = () => {
           </div>
         </article>
       </section>
+
       <ModalWrapper />
     </main>
   );

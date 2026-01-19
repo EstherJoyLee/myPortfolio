@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Modal.module.scss";
 import CloseButton from "../Buttons/CloseButton";
 
@@ -8,6 +8,17 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+    return () => document.removeEventListener("keydown", handleEscKey);
+  }, [onClose]);
+
   return (
     <div className={styles.modalWrapper} onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()} className={styles.modalContent}>

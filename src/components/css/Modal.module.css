@@ -1,0 +1,27 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+.modalWrapper .modalContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.modalWrapper .button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}/*# sourceMappingURL=Modal.module.css.map */

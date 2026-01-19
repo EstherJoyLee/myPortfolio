@@ -104,7 +104,9 @@
           flex-flow: column;
 
           button {
-            font: bold 20px/1 "Orbitron", sans-serif;
+            font:
+              bold 20px/1 "Orbitron",
+              sans-serif;
             color: lightcyan;
             margin-bottom: 20px;
             transition: 0.5s;
@@ -222,7 +224,7 @@
 
       // 두 번째 article
       &.face2 {
-        transform: rotateY(300deg) translateZ(-844px);
+        transform: rotateY(308.57deg) translateZ(-844px);
         backface-visibility: hidden;
         .inner {
           div {
@@ -325,7 +327,7 @@
 
       // 세 번째 article
       &.face3 {
-        transform: rotateY(240deg) translateZ(-844px);
+        transform: rotateY(257.14deg) translateZ(-844px);
         backface-visibility: hidden;
         .inner {
           div > div {
@@ -383,14 +385,16 @@
         }
       }
 
-      // 네네 번째 article
+      // 네 번째 article
       &.face4 {
-        transform: rotateY(180deg) translateZ(-844px);
+        transform: rotateY(205.71deg) translateZ(-844px);
         backface-visibility: hidden;
         .inner {
           div {
             h2 {
-              font: bold 24px/1 "Orbitron", sans-serif;
+              font:
+                bold 24px/1 "Orbitron",
+                sans-serif;
               color: lightcyan;
               transition: 0.5s;
             }
@@ -403,9 +407,32 @@
           }
         }
       }
+
       // 다섯 번째 article
       &.face5 {
-        transform: rotateY(120deg) translateZ(-844px);
+        transform: rotateY(154.29deg) translateZ(-844px);
+        backface-visibility: hidden;
+        .inner {
+          div {
+            h2 {
+              font:
+                bold 24px/1 "Orbitron",
+                sans-serif;
+              color: lightcyan;
+              transition: 0.5s;
+            }
+
+            &:hover {
+              h2 {
+                text-shadow: 0 0 10px aqua;
+              }
+            }
+          }
+        }
+      }
+      // 여섯 번째 article
+      &.face6 {
+        transform: rotateY(102.86deg) translateZ(-844px);
         backface-visibility: hidden;
         .inner {
           display: flex;
@@ -427,7 +454,9 @@
             }
 
             span {
-              font: bold 120px/1 "orbitron", sans-serif;
+              font:
+                bold 120px/1 "orbitron",
+                sans-serif;
               position: absolute;
               bottom: 90px;
               right: 60px;
@@ -485,7 +514,9 @@
             // }
 
             i {
-              transition: transform 0.5s ease, opacity 0.5s ease;
+              transition:
+                transform 0.5s ease,
+                opacity 0.5s ease;
             }
 
             &:hover {
@@ -498,9 +529,9 @@
           }
         }
       }
-      // 여섯 번째 article
-      &.face6 {
-        transform: rotateY(60deg) translateZ(-844px);
+      // 일곱 번째 article
+      &.face7 {
+        transform: rotateY(51.43deg) translateZ(-844px);
         backface-visibility: hidden;
         .inner {
           > div {
@@ -517,7 +548,9 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              transition: transform 0.5s ease, opacity 0.5s ease;
+              transition:
+                transform 0.5s ease,
+                opacity 0.5s ease;
               position: relative;
 
               &::after {
@@ -537,11 +570,15 @@
               width: 75%;
               padding: 40px;
               h2 {
-                font: bold 20px/1 "orbitron", sans-serif;
+                font:
+                  bold 20px/1 "orbitron",
+                  sans-serif;
                 color: #fff;
                 margin-bottom: 10px;
                 letter-spacing: 1px;
-                transition: transform 0.5s ease, opacity 0.5s ease;
+                transition:
+                  transform 0.5s ease,
+                  opacity 0.5s ease;
                 transform-origin: left;
               }
 

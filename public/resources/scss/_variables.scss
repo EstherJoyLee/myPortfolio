@@ -1,0 +1,70 @@
+// ============================================
+// Breakpoints
+// ============================================
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1440px;
+
+// ============================================
+// Media Query Mixins
+// ============================================
+
+// 모바일 (480px 이하)
+@mixin mobile {
+  @media screen and (max-width: #{$mobile - 1px}) {
+    @content;
+  }
+}
+
+// 태블릿 (481px ~ 767px)
+@mixin tablet {
+  @media screen and (min-width: $mobile) and (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+// 모바일 + 태블릿 (768px 이하)
+@mixin mobile-tablet {
+  @media screen and (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+// 데스크톱 (1024px 이상)
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+// 태블릿 + 데스크톱 (768px 이상)
+@mixin tablet-desktop {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+// Wide (1440px 이상)
+@mixin wide {
+  @media screen and (min-width: $wide) {
+    @content;
+  }
+}
+
+// ============================================
+// Colors
+// ============================================
+$color-primary: #00d9ff; // aqua/cyan
+$color-text-light: #ddd;
+$color-text-dark: #333;
+$color-bg-dark: #000;
+$color-bg-light: #f5f5f5;
+
+// ============================================
+// Typography
+// ============================================
+$font-primary: "Orbitron", sans-serif;
+$font-secondary: "Arial", sans-serif;
+$font-size-base: 17px;
+$line-height-base: 1.4;

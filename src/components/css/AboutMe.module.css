@@ -1,0 +1,152 @@
+@charset "UTF-8";
+.aboutMeWrapper {
+  background: #121212;
+  padding: 3rem 2rem 6rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.6;
+  overflow: auto;
+  height: 100%;
+  color: #e0e0e0;
+  word-break: auto-phrase;
+}
+.aboutMeWrapper h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.aboutMeWrapper ul {
+  padding-left: 1rem;
+  list-style: none;
+}
+.aboutMeWrapper ul li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: #cccccc;
+}
+
+/* 0. 프로필 */
+.profile {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.profile a {
+  color: #bbb;
+}
+.profile .profileLeft img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 2px solid #333;
+}
+.profile .profileRight h1 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.profile .profileRight .jobTitle {
+  font-size: 1rem;
+  color: #4fc3f7;
+  margin-bottom: 1rem;
+}
+.profile .profileRight .contactList li {
+  font-size: 0.95rem;
+  color: #bbbbbb;
+}
+
+/* 1. 소개 영역 */
+.intro {
+  margin-bottom: 2.5rem;
+}
+.intro h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+/* 2. 개발 철학 & 일하는 방식 */
+.values,
+.workStyle {
+  margin-bottom: 3rem;
+}
+.values ul li,
+.workStyle ul li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+.values ul li::before,
+.workStyle ul li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+  color: #00ffc3;
+}
+
+/* 3. 경험 카드 */
+.experiences {
+  margin-bottom: 3rem;
+}
+.experiences .cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.experiences .card {
+  background: #1e1e1e;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease;
+}
+.experiences .card:hover {
+  transform: scale(1.03) rotateZ(-0.5deg);
+  box-shadow: 0 6px 18px rgba(0, 255, 255, 0.15);
+}
+.experiences .card li {
+  list-style: circle;
+}
+.experiences .card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.experiences .card p {
+  font-size: 0.92rem;
+  color: #cccccc;
+  margin-bottom: 0.4rem;
+}
+
+/* 5. Fun Facts */
+.fun {
+  margin-bottom: 3rem;
+}
+.fun li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #bdbdbd;
+}
+
+/* 반응형 - Portrait 또는 좁은 화면 */
+@media (max-width: 768px), (orientation: portrait) {
+  .aboutMeWrapper {
+    padding: 2rem 1.2rem;
+  }
+  .profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile .profileRight h1 {
+    font-size: 1.4rem;
+  }
+  .experiences .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=AboutMe.module.css.map */

@@ -687,6 +687,274 @@ const ProjectData = {
   solutionSystem,
   theSharp,
   sunlin,
+  clef_project1: {
+    project: {
+      name: "AI Learning Platform",
+      progressPeriod: "2025.01 ~ 2025.02",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/ai-learning",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "UI 컴포넌트 개발", back: "AI API 통합" },
+      { front: "반응형 디자인", back: "데이터 베이스 설계" },
+    ],
+    mainFeatures: [
+      {
+        title: "음악 학습 AI",
+        icon: "🎵",
+        desc: ["AI 기반 음악 학습", "실시간 피드백"],
+      },
+      {
+        title: "진행도 추적",
+        icon: "📊",
+        desc: ["사용자 진도 추적", "성과 분석"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>AI 모델 학습 최적화 및 API 응답 시간 개선을 위한 캐싱 전략 수립</p>
+    ),
+  },
+  clef_project2: {
+    project: {
+      name: "Music Analytics",
+      progressPeriod: "2025.01 ~ 2025.02",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/analytics",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <SCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "그래프 라이브러리 통합", back: "데이터 수집 및 분석" },
+      { front: "차트 최적화", back: "실시간 데이터 처리" },
+    ],
+    mainFeatures: [
+      {
+        title: "실시간 분석",
+        icon: "📈",
+        desc: ["실시간 음악 데이터 분석", "통계 시각화"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>대용량 데이터 렌더링 최적화를 위한 가상화 기법 적용</p>
+    ),
+  },
+  clef_project3: {
+    project: {
+      name: "Collaboration Tool",
+      progressPeriod: "2025.01 ~ 2025.02",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/collaboration",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "실시간 협업 UI", back: "소켓 기반 실시간 통신" },
+    ],
+    mainFeatures: [
+      {
+        title: "실시간 협업",
+        icon: "🤝",
+        desc: ["여러 사용자 동시 작업"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>실시간 데이터 동기화 및 충돌 해결 로직 구현</p>
+    ),
+  },
+  clef_project4: {
+    project: {
+      name: "Stream Service",
+      progressPeriod: "2025.01 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/stream",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <SCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "플레이어 UI 개발", back: "스트리밍 인프라 구축" },
+    ],
+    mainFeatures: [
+      {
+        title: "음악 스트리밍",
+        icon: "🎧",
+        desc: ["고품질 음악 스트리밍"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>버퍼링 최적화 및 대역폭 관리 전략 수립</p>
+    ),
+  },
+  clef_project5: {
+    project: {
+      name: "Mobile App",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/mobile",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [{ front: "모바일 최적화", back: "푸시 알림 시스템" }],
+    mainFeatures: [
+      {
+        title: "모바일 앱",
+        icon: "📱",
+        desc: ["iOS/Android 지원"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>모바일 성능 최적화 및 배터리 효율성 개선</p>
+    ),
+  },
+  clef_project6: {
+    project: {
+      name: "Web Dashboard",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/dashboard",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [{ front: "대시보드 UI 구축", back: "데이터 시각화" }],
+    mainFeatures: [
+      {
+        title: "관리 대시보드",
+        icon: "📈",
+        desc: ["실시간 모니터링", "통계 대시보드"],
+      },
+    ],
+    troubleshootingAndSolutions: () => <p>대규모 데이터셋 성능 최적화</p>,
+  },
+  clef_project7: {
+    project: {
+      name: "API Service",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/api",
+    },
+    technologyStack: {
+      frontEnd: [<JavaScriptIcon />, <TypeScriptIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [{ front: "API 문서화", back: "API 서버 개발" }],
+    mainFeatures: [
+      {
+        title: "REST API",
+        icon: "🔌",
+        desc: ["RESTful API 제공", "API 버전 관리"],
+      },
+    ],
+    troubleshootingAndSolutions: () => <p>API 성능 모니터링 및 속도 최적화</p>,
+  },
+  clef_project8: {
+    project: {
+      name: "Admin Panel",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/admin",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "관리 페이지 구축", back: "권한 관리 시스템" },
+    ],
+    mainFeatures: [
+      {
+        title: "관리자 패널",
+        icon: "⚙️",
+        desc: ["사용자 관리", "콘텐츠 관리"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>사용자 권한 및 접근 제어 시스템 구현</p>
+    ),
+  },
+  clef_project9: {
+    project: {
+      name: "User Portal",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/portal",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <SCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [{ front: "포털 UI 개발", back: "사용자 정보 관리" }],
+    mainFeatures: [
+      {
+        title: "사용자 포털",
+        icon: "👤",
+        desc: ["프로필 관리", "구독 관리"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>사용자 개인정보 보호 및 데이터 암호화</p>
+    ),
+  },
+  clef_project10: {
+    project: {
+      name: "Payment System",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/payment",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "결제 UI 구축", back: "결제 게이트웨이 통합" },
+    ],
+    mainFeatures: [
+      {
+        title: "결제 시스템",
+        icon: "💳",
+        desc: ["다양한 결제 수단", "구독 관리"],
+      },
+    ],
+    troubleshootingAndSolutions: () => <p>결제 보안 및 거래 무결성 검증</p>,
+  },
+  clef_project11: {
+    project: {
+      name: "Recommendation Engine",
+      progressPeriod: "2025.02 ~ 2025.03",
+      liveDemoUrl: "https://example.com",
+      gitRepositoryUrl: "https://github.com/clef/recommendation",
+    },
+    technologyStack: {
+      frontEnd: [<ReactIcon />, <TypeScriptIcon />, <TailwindCSSIcon />],
+      backEnd: [<FirebaseIcon />, <VercelIcon />],
+    },
+    keyResponsibilities: [
+      { front: "추천 UI 개발", back: "추천 알고리즘 구현" },
+    ],
+    mainFeatures: [
+      {
+        title: "추천 엔진",
+        icon: "⭐",
+        desc: ["개인화 추천", "트렌딩 콘텐츠"],
+      },
+    ],
+    troubleshootingAndSolutions: () => (
+      <p>머신러닝 기반 추천 알고리즘 최적화</p>
+    ),
+  },
 };
 
 export default ProjectData;

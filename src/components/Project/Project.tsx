@@ -31,6 +31,7 @@ window.$ = $;
 
 const Project = ({ projectId }: KeyResponsibilitiesProps) => {
   const hasAnimated = useRef(false);
+  console.log("Project 컴포넌트 마운트됨, projectId:", projectId);
   const project = projectData[projectId].project;
   const technologyStack = projectData[projectId].technologyStack;
   const mainFeatures = projectData[projectId].mainFeatures;
@@ -48,7 +49,7 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
     console.log("Project Page Loaded!!");
 
     const scrollables = Array.from(
-      document.querySelectorAll("[class*=sectionInner] *")
+      document.querySelectorAll("[class*=sectionInner] *"),
     ).filter((el) => {
       const style = window.getComputedStyle(el);
       return (
@@ -94,10 +95,10 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
           const sections = document.querySelectorAll(".section");
           const currentSection = sections[index - 1];
           const currentSlidesContainer = currentSection.querySelector(
-            ".fp-slidesContainer"
+            ".fp-slidesContainer",
           );
           const slideArray = Array.from(
-            currentSection.querySelectorAll(".slide")
+            currentSection.querySelectorAll(".slide"),
           );
           const firstSlide = slideArray[0];
 
@@ -157,7 +158,7 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
           const currentSlide = currentSection.find(".slide").eq(slideIndex); // 슬라이드는 0부터 시작
 
           const $targets = currentSlide.find(
-            "[class*='iconWrapper'] li, [class*='featurePoint'], h1, h1 > i, [class*='featureContent'], [class*='troublesWrapper']"
+            "[class*='iconWrapper'] li, [class*='featurePoint'], h1, h1 > i, [class*='featureContent'], [class*='troublesWrapper']",
           );
 
           gsap.to($targets.toArray(), {
@@ -170,7 +171,7 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
 
           if (index === 3 && slideIndex === 1) {
             console.log(
-              "🔥 Key Responsibilities 슬라이드 도착! 카드 애니메이션 시작!"
+              "🔥 Key Responsibilities 슬라이드 도착! 카드 애니메이션 시작!",
             );
 
             gsap.to(".card", {
@@ -194,14 +195,14 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
           index,
           slideIndex,
           direction,
-          nextSlideIndex
+          nextSlideIndex,
         ) {
           gsap.set(
             "[class*='iconWrapper'] li, [class*='featurePoint'], .slide h1, .slide h1 > i, [class*='featureContent'], [class*='troublesWrapper']",
             {
               y: 30,
               opacity: 0,
-            }
+            },
           );
         },
       });
