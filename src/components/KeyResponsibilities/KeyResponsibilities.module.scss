@@ -45,11 +45,11 @@
   transform-style: preserve-3d;
   position: relative;
   transform: perspective(100vw) translateX(100vw) rotateY(180deg);
-  transition: transform 0.1s;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 .card:hover {
-  transform: perspective(100vw) translateX(0vw) rotateY(180deg) !important;
-  transition: 0.4s;
+  transform: perspective(100vw) translateX(0vw) rotateY(180deg);
 }
 
 .front,
@@ -63,6 +63,7 @@
   backface-visibility: hidden;
   padding: 2.8vh;
   background-color: rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
 }
 
 .front {
@@ -71,7 +72,7 @@
   justify-content: center;
   text-align: center;
   font-size: clamp(12px, 2vh, 28px);
-  word-break: auto-phrase;
+  word-break: break-all;
 
   .hover {
     position: absolute;
@@ -103,7 +104,7 @@
   display: grid;
   align-items: center;
   text-align: center;
-  word-break: auto-phrase;
+  word-break: break-all;
 }
 
 @media screen and (orientation: portrait) {

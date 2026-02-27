@@ -7,7 +7,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 .modalContent h1 {
   font-size: 2rem;
@@ -17,27 +19,49 @@
 }
 .modalContent .swiper {
   width: 100%;
-  max-width: 1000px;
-  padding: 2rem 0;
+  max-width: calc(100% - 100px);
+  padding: 1.5rem 0;
 }
 .modalContent .swiper :global(.swiper-button-prev),
 .modalContent .swiper :global(.swiper-button-next) {
   color: lightcyan;
-  background: rgba(0, 217, 255, 0.2);
-  width: 40px;
-  height: 40px;
+  background: rgba(0, 217, 255, 0.15);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  border: 2px solid rgba(0, 217, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 45%;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .modalContent .swiper :global(.swiper-button-prev):after,
 .modalContent .swiper :global(.swiper-button-next):after {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
 }
 .modalContent .swiper :global(.swiper-button-prev):hover,
 .modalContent .swiper :global(.swiper-button-next):hover {
-  background: rgba(0, 217, 255, 0.4);
+  background: rgba(0, 217, 255, 0.3);
+  border-color: lightcyan;
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+  transform: scale(1.1);
+}
+.modalContent .swiper :global(.swiper-button-prev):active,
+.modalContent .swiper :global(.swiper-button-next):active {
+  transform: scale(0.95);
+}
+.modalContent .swiper :global(.swiper-button-prev) {
+  left: 0;
+}
+.modalContent .swiper :global(.swiper-button-next) {
+  right: 0;
+}
+.modalContent .swiper :global(.swiper-pagination) {
+  position: relative;
+  margin-top: 1rem;
 }
 .modalContent .swiper :global(.swiper-pagination-bullet) {
   background: rgba(255, 255, 255, 0.5);
@@ -47,6 +71,15 @@
   background: lightcyan;
   box-shadow: 0 0 10px aqua;
 }
+.modalContent .swiper [class*=swiper-button] {
+  top: 50%;
+  transform: translateY(-50%) !important;
+  margin: 0;
+}
+.modalContent .swiper [class*=swiper-button] svg {
+  width: 18px;
+  height: 18px;
+}
 .modalContent .swiperSlide {
   display: flex;
   align-items: center;
@@ -55,7 +88,9 @@
 .modalContent .projectCard {
   width: 100%;
   height: 280px;
-  background: rgba(255, 255, 255, 0.05);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 1px solid rgba(0, 217, 255, 0.5);
   border-radius: 12px;
   color: white;
@@ -64,20 +99,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 1rem;
   padding: 1.5rem;
   text-decoration: none;
+  box-sizing: border-box;
+  position: relative;
+}
+.modalContent .projectCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));
+  border-radius: 12px;
+  z-index: 1;
 }
 .modalContent .projectCard:hover {
-  background: rgba(0, 217, 255, 0.15);
   border-color: lightcyan;
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
 }
-.modalContent .projectCard .thumbnail {
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
+.modalContent .projectCard:hover::before {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
 }
 .modalContent .projectCard h3 {
   font-size: 1.2rem;
@@ -85,10 +131,110 @@
   color: lightcyan;
   margin: 0;
   text-align: center;
+  word-break: keep-all;
+  position: relative;
+  z-index: 2;
 }
 .modalContent .projectCard p {
   font-size: 0.9rem;
-  color: #aaa;
+  color: #ccc;
   margin: 0;
   text-align: center;
+  word-break: keep-all;
+  position: relative;
+  z-index: 2;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .modalContent {
+    padding: 3rem 1.5rem;
+  }
+  .modalContent h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .modalContent .swiper {
+    max-width: 900px;
+    padding: 1.5rem 0;
+  }
+  .modalContent .swiper :global(.swiper-button-prev),
+  .modalContent .swiper :global(.swiper-button-next) {
+    width: 38px;
+    height: 38px;
+  }
+  .modalContent .swiper :global(.swiper-button-prev):after,
+  .modalContent .swiper :global(.swiper-button-next):after {
+    font-size: 18px;
+  }
+  .modalContent .swiperSlide {
+    padding: 0;
+  }
+  .modalContent .projectCard {
+    height: 250px;
+    padding: 1.2rem;
+    gap: 0.9rem;
+  }
+  .modalContent .projectCard h3 {
+    font-size: 1.1rem;
+  }
+  .modalContent .projectCard p {
+    font-size: 0.85rem;
+  }
+  .modalContent .projectCard:hover {
+    transform: translateY(-4px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .modalContent {
+    padding: 2rem 1rem;
+  }
+  .modalContent h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .modalContent .swiper {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+  .modalContent .swiper :global(.swiper-button-prev),
+  .modalContent .swiper :global(.swiper-button-next) {
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 217, 255, 0.3);
+  }
+  .modalContent .swiper :global(.swiper-button-prev):after,
+  .modalContent .swiper :global(.swiper-button-next):after {
+    font-size: 14px;
+  }
+  .modalContent .swiper :global(.swiper-button-prev):hover,
+  .modalContent .swiper :global(.swiper-button-next):hover {
+    background: rgba(0, 217, 255, 0.5);
+  }
+  .modalContent .swiper :global(.swiper-button-prev) {
+    left: 5px;
+  }
+  .modalContent .swiper :global(.swiper-button-next) {
+    right: 5px;
+  }
+  .modalContent .swiper :global(.swiper-pagination) {
+    bottom: -30px;
+  }
+  .modalContent .swiperSlide {
+    padding: 0;
+  }
+  .modalContent .projectCard {
+    height: 200px;
+    padding: 1rem;
+    gap: 0.7rem;
+  }
+  .modalContent .projectCard h3 {
+    font-size: 0.95rem;
+  }
+  .modalContent .projectCard p {
+    font-size: 0.75rem;
+  }
+  .modalContent .projectCard:hover {
+    transform: translateY(-2px);
+  }
 }/*# sourceMappingURL=CLEFModal.module.css.map */

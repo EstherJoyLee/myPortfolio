@@ -61,7 +61,6 @@ const observeScrollableElements = () => {
 
 const ScrollManager = () => {
   useEffect(() => {
-    console.log("Scroll Manager Start!!");
     observeScrollableElements();
   }, []);
 

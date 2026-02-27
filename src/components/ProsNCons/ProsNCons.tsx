@@ -104,7 +104,6 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("❌ 데이터 로드 실패:", error);
         setLoading(false);
       });
   }, [dimensions]); // ✅ 화면 크기가 변경될 때만 실행
@@ -136,23 +135,15 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
 
   // ✅ 노드 클릭 시 비디오 모달 팝업
   const handleNodeClick = (node: any) => {
-    console.log(`🔎 클릭된 노드 ID: ${node.id}`);
-    console.log("🔎 현재 저장된 비디오 맵 키 목록: ", Object.keys(videoMap));
-
     const videoInfo = videoMap[node.id];
 
     if (!videoInfo) {
-      console.error(`❌ 해당 노드(${node.id})에 대한 비디오 정보가 없습니다.`);
       return;
     }
 
     if (typeof videoInfo === "object" && !Array.isArray(videoInfo)) {
       setSelectedNode({ ...videoInfo, key: node.id });
     } else {
-      console.error(
-        `❌ 비디오 정보(${node.id})가 객체 형태가 아닙니다.`,
-        videoInfo
-      );
       return;
     }
   };

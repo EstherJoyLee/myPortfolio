@@ -31,7 +31,6 @@ window.$ = $;
 
 const Project = ({ projectId }: KeyResponsibilitiesProps) => {
   const hasAnimated = useRef(false);
-  console.log("Project 컴포넌트 마운트됨, projectId:", projectId);
   const project = projectData[projectId].project;
   const technologyStack = projectData[projectId].technologyStack;
   const mainFeatures = projectData[projectId].mainFeatures;
@@ -45,8 +44,6 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
 
     if (hasAnimated.current) return;
     hasAnimated.current = true;
-
-    console.log("Project Page Loaded!!");
 
     const scrollables = Array.from(
       document.querySelectorAll("[class*=sectionInner] *"),
@@ -76,7 +73,6 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
     // fullpage.js 초기화
     const initFullpage = () => {
       if (!$.fn.fullpage) {
-        console.error("fullpage.js가 올바르게 로드되지 않았습니다.");
         return;
       }
 
@@ -127,7 +123,6 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
             currentSlidesContainer.style.transform =
               "translate3d(0px, 0px, 0px)";
           }
-          // console.log("onLeave!");
         },
         afterLoad: function (anchorLink, index) {
           const currentSection = $(".section").eq(index - 1); // 섹션 인덱스는 1부터 시작
@@ -141,20 +136,15 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
             stagger: 0.2,
           });
 
-          // console.log("afterLoad!");
         },
         afterRender: function () {
-          // console.log("afterRender!");
         },
         afterResize: function () {
-          // console.log("afterResize!");
         },
         afterResponsive: function (isResponsive) {
-          // console.log("afterResponsive!");
         },
         afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
           const currentSection = $(".section").eq(index - 1); // 섹션 인덱스는 1부터 시작
-          console.log("currentSection: ", currentSection);
           const currentSlide = currentSection.find(".slide").eq(slideIndex); // 슬라이드는 0부터 시작
 
           const $targets = currentSlide.find(
@@ -170,10 +160,6 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
           });
 
           if (index === 3 && slideIndex === 1) {
-            console.log(
-              "🔥 Key Responsibilities 슬라이드 도착! 카드 애니메이션 시작!",
-            );
-
             gsap.to(".card", {
               x: 0,
               rotationY: 0,
@@ -215,8 +201,6 @@ const Project = ({ projectId }: KeyResponsibilitiesProps) => {
     return () => {
       if ($.fn.fullpage && typeof $.fn.fullpage.destroy === "function") {
         $.fn.fullpage.destroy("all");
-      } else {
-        console.warn("fullPage.js의 destroy 메서드를 찾을 수 없습니다.");
       }
     };
   }, []);

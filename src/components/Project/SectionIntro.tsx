@@ -14,6 +14,9 @@ interface Props {
 }
 
 export default function SectionIntro({ projectId, project }: Props) {
+  const hasLiveDemo =
+    Boolean(project.liveDemoUrl) && project.liveDemoUrl !== "about:blank";
+
   return (
     <div className={`section ${styles.section}`} id={styles.section1}>
       <div className={styles.sectionInner}>
@@ -21,9 +24,15 @@ export default function SectionIntro({ projectId, project }: Props) {
           <h1>
             <i>✏️</i> {project.name} <span>[{project.progressPeriod}]</span>
           </h1>
-          <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
-            <i>🔗</i> Live Demo
-          </a>
+          {hasLiveDemo ? (
+            <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
+              <i>🔗</i> Live Demo
+            </a>
+          ) : (
+            <span className={styles.privateLink}>
+              <i>🔒</i> Live Demo (비공개)
+            </span>
+          )}
           {project.testBlogUrl ? (
             <a href={project.testBlogUrl} target="_blank" rel="noreferrer">
               <i>🔗</i>Test BLog Live Demo

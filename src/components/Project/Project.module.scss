@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   z-index: 999;
+  gap: 20px;
 
   li {
     margin: 5px 0;
@@ -43,7 +44,6 @@
     width: 100%;
     position: relative;
     text-align: right;
-    padding-right: 20px;
 
     span {
       color: #fff;
@@ -289,10 +289,15 @@
       width: 100%;
       max-width: 1000px;
       overflow: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
       display: flex;
       flex-flow: column;
       gap: 8vh;
+      gap: 8dvh;
       padding: 0 20px;
+      max-height: calc(100vh - 200px);
+      max-height: calc(100dvh - 200px);
 
       section {
         width: 100%;
@@ -375,7 +380,7 @@
   height: 100vh;
   flex-flow: column;
   color: #fff;
-  padding: 86px 52px;
+  // padding: 86px 52px;
 
   .projectIntro {
     width: 100%;
@@ -394,6 +399,16 @@
       &:hover {
         opacity: 1 !important;
       }
+    }
+
+    .privateLink {
+      color: #fff;
+      opacity: 0.35;
+      font-size: clamp(10px, 2vh, 16px);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: default;
     }
   }
 

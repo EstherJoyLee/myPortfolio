@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 const DevToolsBlocker = () => {
   useEffect(() => {
-    console.log("🚀 개발자 도구 차단 컴포넌트가 마운트되었습니다.");
     // 1️⃣ F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U 키 방지
     const handleKeyDown = (event: KeyboardEvent) => {
       if (
@@ -31,18 +30,6 @@ const DevToolsBlocker = () => {
       }
     };
 
-    // 4️⃣ console 접근 감지 및 차단
-    const detectConsoleAccess = () => {
-      const element = new Image();
-      Object.defineProperty(element, "id", {
-        get: function () {
-          alert("개발자 도구 접근이 감지되었습니다.");
-          window.location.href = "about:blank";
-        },
-      });
-      console.log("%c", element);
-    };
-
     // 5️⃣ debugger 트릭 적용 (개발자 도구 실행 시 멈추게 함)
     const preventDebugging = () => {
       setInterval(() => {
@@ -57,7 +44,6 @@ const DevToolsBlocker = () => {
     document.addEventListener("contextmenu", handleContextMenu);
     window.addEventListener("resize", detectDevTools);
     setInterval(detectDevTools, 500);
-    setInterval(detectConsoleAccess, 1000);
     preventDebugging();
 
     // 언마운트 시 이벤트 제거

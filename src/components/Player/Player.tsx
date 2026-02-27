@@ -23,21 +23,15 @@ const Player: React.FC<PlayerProps> = ({
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  console.log("isPortrait: ", isPortrait);
   useEffect(() => {
     const fetchVideoUrl = async () => {
       try {
         const urls = await getAllVideoUrls();
-        // console.log("📦 [Firebase] 전체 video URLs:", urls);
-
         // ✅ videoId가 포함된 URL 찾기 (파일명 or ID 기준)
         const matchedUrl = urls.find((url) => url.includes(videoId));
-        // console.log("🔍 매칭된 video URL:", matchedUrl);
         if (matchedUrl) setVideoUrl(matchedUrl);
-        else
-          console.error(`❌ 해당 videoId(${videoId})로 매칭된 URL이 없습니다.`);
       } catch (err) {
-        console.error("🔥 Firebase Storage URL 가져오기 실패:", err);
+        // ignore
       } finally {
         setLoading(false);
       }
@@ -48,7 +42,6 @@ const Player: React.FC<PlayerProps> = ({
 
   useEffect(() => {
     if (videoRef.current) {
-      console.log("▶️ 영상 태그 참조 성공:", videoRef.current);
       videoRef.current.currentTime = timestamp;
     }
   }, [videoUrl, timestamp]);
