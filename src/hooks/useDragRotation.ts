@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface Options {
   autoRotate?: boolean;
@@ -6,49 +6,101 @@ interface Options {
 
 export default function useDragRotation(
   ref: React.RefObject<HTMLDivElement | null>,
-  options: Options = { autoRotate: true }
+  options: Options = { autoRotate: true },
 ) {
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentRotation, setCurrentRotation] = useState(0);
+
   const requestRef = useRef<number | null>(null);
   const autoRotateSpeed = useRef(0.2);
   const velocityRef = useRef(0);
   const isHovering = useRef(false);
 
-  const cancelFrame = () => {
+  // ✅ 최신 상태를 이벤트 핸들러/RAF에서 읽기 위한 refs
+  const isDraggingRef = useRef(isDragging);
+  const startXRef = useRef(startX);
+  const currentRotationRef = useRef(currentRotation);
+  const rotationRef = useRef(rotation);
+  const autoRotateEnabledRef = useRef(!!options.autoRotate);
+
+  useEffect(() => {
+    isDraggingRef.current = isDragging;
+  }, [isDragging]);
+
+  useEffect(() => {
+    startXRef.current = startX;
+  }, [startX]);
+
+  useEffect(() => {
+    currentRotationRef.current = currentRotation;
+  }, [currentRotation]);
+
+  useEffect(() => {
+    rotationRef.current = rotation;
+  }, [rotation]);
+
+  useEffect(() => {
+    autoRotateEnabledRef.current = !!options.autoRotate;
+  }, [options.autoRotate]);
+
+  const cancelFrame = useCallback(() => {
     if (requestRef.current !== null) {
       cancelAnimationFrame(requestRef.current);
       requestRef.current = null;
     }
-  };
+  }, []);
 
-  const autoRotate = () => {
+  const autoRotate = useCallback(() => {
     const rotate = () => {
-      if (!isDragging && !isHovering.current && options.autoRotate) {
-        setRotation((prev) => prev + autoRotateSpeed.current);
-        setCurrentRotation((prev) => prev + autoRotateSpeed.current);
+      if (
+        !isDraggingRef.current &&
+        !isHovering.current &&
+        autoRotateEnabledRef.current
+      ) {
+        setRotation((prev) => {
+          const next = prev + autoRotateSpeed.current;
+          rotationRef.current = next;
+          return next;
+        });
+
+        setCurrentRotation((prev) => {
+          const next = prev + autoRotateSpeed.current;
+          currentRotationRef.current = next;
+          return next;
+        });
       }
       requestRef.current = requestAnimationFrame(rotate);
     };
 
-    cancelFrame(); // 중복 방지
+    cancelFrame();
     requestRef.current = requestAnimationFrame(rotate);
-  };
+  }, [cancelFrame]);
 
-  const smoothRotation = () => {
+  const smoothRotation = useCallback(() => {
     velocityRef.current *= 0.95;
+
     if (Math.abs(velocityRef.current) > 0.1) {
-      setRotation((prev) => prev + velocityRef.current);
-      setCurrentRotation((prev) => prev + velocityRef.current);
+      setRotation((prev) => {
+        const next = prev + velocityRef.current;
+        rotationRef.current = next;
+        return next;
+      });
+
+      setCurrentRotation((prev) => {
+        const next = prev + velocityRef.current;
+        currentRotationRef.current = next;
+        return next;
+      });
+
       requestRef.current = requestAnimationFrame(smoothRotation);
     } else {
-      if (options.autoRotate && !isHovering.current) {
+      if (autoRotateEnabledRef.current && !isHovering.current) {
         autoRotate();
       }
     }
-  };
+  }, [autoRotate]);
 
   useEffect(() => {
     const el = ref.current;
@@ -57,42 +109,59 @@ export default function useDragRotation(
     const onMouseDown = (e: MouseEvent) => {
       setIsDragging(true);
       setStartX(e.clientX);
+      startXRef.current = e.clientX;
       velocityRef.current = 0;
       cancelFrame();
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return;
-      const deltaX = e.clientX - startX;
-      setRotation(currentRotation - deltaX);
+      if (!isDraggingRef.current) return;
+      const deltaX = e.clientX - startXRef.current;
+      const nextRotation = currentRotationRef.current - deltaX;
+
+      setRotation(nextRotation);
+      rotationRef.current = nextRotation;
+
       velocityRef.current = deltaX * 0.15;
     };
 
     const onMouseUp = () => {
-      if (!isDragging) return;
+      if (!isDraggingRef.current) return;
       setIsDragging(false);
-      setCurrentRotation(rotation);
+
+      setCurrentRotation(rotationRef.current);
+      currentRotationRef.current = rotationRef.current;
+
       smoothRotation();
     };
 
     const onTouchStart = (e: TouchEvent) => {
+      const x = e.touches[0].clientX;
       setIsDragging(true);
-      setStartX(e.touches[0].clientX);
+      setStartX(x);
+      startXRef.current = x;
       velocityRef.current = 0;
       cancelFrame();
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (!isDragging) return;
-      const deltaX = e.touches[0].clientX - startX;
-      setRotation(currentRotation - deltaX);
+      if (!isDraggingRef.current) return;
+      const deltaX = e.touches[0].clientX - startXRef.current;
+      const nextRotation = currentRotationRef.current - deltaX;
+
+      setRotation(nextRotation);
+      rotationRef.current = nextRotation;
+
       velocityRef.current = deltaX * 0.15;
     };
 
     const onTouchEnd = () => {
-      if (!isDragging) return;
+      if (!isDraggingRef.current) return;
       setIsDragging(false);
-      setCurrentRotation(rotation);
+
+      setCurrentRotation(rotationRef.current);
+      currentRotationRef.current = rotationRef.current;
+
       smoothRotation();
     };
 
@@ -103,7 +172,7 @@ export default function useDragRotation(
 
     const onMouseLeave = () => {
       isHovering.current = false;
-      if (options.autoRotate && !isDragging) {
+      if (autoRotateEnabledRef.current && !isDraggingRef.current) {
         autoRotate();
       }
     };
@@ -114,12 +183,11 @@ export default function useDragRotation(
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
 
-    el.addEventListener("touchstart", onTouchStart);
-    el.addEventListener("touchmove", onTouchMove);
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: true });
     el.addEventListener("touchend", onTouchEnd);
 
-    // ✅ 처음 진입 시 자동 회전 시작
-    if (options.autoRotate) {
+    if (autoRotateEnabledRef.current) {
       autoRotate();
     }
 
@@ -136,7 +204,7 @@ export default function useDragRotation(
 
       cancelFrame();
     };
-  }, [ref, isDragging, rotation, currentRotation, options.autoRotate]);
+  }, [ref, autoRotate, smoothRotation, cancelFrame]);
 
   return { rotation };
 }

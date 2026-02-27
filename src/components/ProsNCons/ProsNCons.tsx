@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ForceGraph2D from "react-force-graph-2d";
 import { forceCollide, forceRadial, forceManyBody } from "d3-force";
-import Player from "@/components/Player/Player"; // ✅ Player 컴포넌트 추가
+import Player from "@/components/Player/Player";
 import Loader from "../Loader/Loader";
 
 interface ProsNConsProps {
@@ -11,10 +11,11 @@ interface ProsNConsProps {
 const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const fgRef = useRef<any>(null);
+
   const { r, g, b } =
     jsonData === "pros" ? { r: 0, g: 255, b: 255 } : { r: 255, g: 0, b: 255 };
 
-  const nodeSize = 30; // ✅ 노드 사이즈를 정의
+  const nodeSize = 30;
 
   const [data, setData] = useState<{ nodes: any[]; links: any[] }>({
     nodes: [],
@@ -25,11 +26,10 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
   const [selectedNode, setSelectedNode] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: typeof window !== "undefined" ? window.innerWidth : 1280,
+    height: typeof window !== "undefined" ? window.innerHeight : 720,
   });
 
-  // ✅ 리사이즈 이벤트를 `debounce` 처리하여 너무 자주 호출되지 않도록 함
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -38,19 +38,26 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
     const resizeObserver = new ResizeObserver((entries) => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        for (let entry of entries) {
+        for (const entry of entries) {
           const { width, height } = entry.contentRect;
           setDimensions({ width, height });
         }
-      }, 300); // ✅ 300ms 후에 dimensions 업데이트
+      }, 300);
     });
 
     resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
+
+    return () => {
+      clearTimeout(resizeTimeout);
+      resizeObserver.disconnect();
+    };
   }, []);
 
+  // ✅ jsonData 의존성 추가
   useEffect(() => {
     const isMobile = dimensions.width <= 800;
+    setLoading(true);
+
     Promise.all([
       fetch(`/resources/data/${jsonData}.json`).then((res) => res.json()),
       fetch("/resources/data/videoData.json").then((res) => res.json()),
@@ -58,10 +65,9 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
       .then(([similarityMatrix, videoData]) => {
         setVideoMap(videoData);
 
-        // ✅ 노드를 중심에서 배치
         const nodes = Object.keys(similarityMatrix).map((id, index, arr) => {
           if (isMobile) {
-            const cols = 4; // 3열 그리드
+            const cols = 4;
             const spacingX = 200;
             const spacingY = 200;
             const row = Math.floor(index / cols);
@@ -72,7 +78,7 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
               group: jsonData,
               x: spacingX * (col + 1),
               y: spacingY * (row + 1),
-              fx: spacingX * (col + 1), // 위치 고정
+              fx: spacingX * (col + 1),
               fy: spacingY * (row + 1),
             };
           } else {
@@ -103,10 +109,10 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
         setData({ nodes, links });
         setLoading(false);
       })
-      .catch((error) => {
+      .catch((_error) => {
         setLoading(false);
       });
-  }, [dimensions]); // ✅ 화면 크기가 변경될 때만 실행
+  }, [dimensions, jsonData]); // ✅ 수정
 
   useEffect(() => {
     const isMobile = dimensions.width <= 800;
@@ -121,30 +127,26 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
 
       fgRef.current.d3Force(
         "radial",
-        forceRadial(maxRadius, centerX, centerY).strength(0.1)
+        forceRadial(maxRadius, centerX, centerY).strength(0.1),
       );
 
       fgRef.current.d3Force("collision", forceCollide(300));
+
       setTimeout(() => {
+        if (!fgRef.current) return;
         isMobile
           ? fgRef.current.zoomToFit(1000, 20)
           : fgRef.current.zoomToFit(1000, 80);
-      }, 500); // ✅ 초기화 후 약간의 딜레이를 줘서 안정적으로 배치
+      }, 500);
     }
-  }, [data, dimensions]); // ✅ 화면 크기가 변경될 때 반경 업데이트
+  }, [data, dimensions]);
 
-  // ✅ 노드 클릭 시 비디오 모달 팝업
   const handleNodeClick = (node: any) => {
     const videoInfo = videoMap[node.id];
-
-    if (!videoInfo) {
-      return;
-    }
+    if (!videoInfo) return;
 
     if (typeof videoInfo === "object" && !Array.isArray(videoInfo)) {
       setSelectedNode({ ...videoInfo, key: node.id });
-    } else {
-      return;
     }
   };
 
@@ -171,15 +173,14 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
             nodeCanvasObjectMode={() => "after"}
             nodeCanvasObject={(node, ctx, globalScale) => {
               const label = node.id;
-              const opacity = node.opacity || 1;
-              const color = `rgb(${r}, ${g}, ${b})`; // ✅ 네온 효과
-              const glowColor = `rgba(${r}, ${g}, ${b}, 0.80)`; // ✅ Glow 효과
+              // ✅ 삭제: const opacity = node.opacity || 1;
+              const color = `rgb(${r}, ${g}, ${b})`;
+              const glowColor = `rgba(${r}, ${g}, ${b}, 0.80)`;
 
-              ctx.shadowBlur = 15; // ✅ 그림자 효과
+              ctx.shadowBlur = 15;
               ctx.shadowColor = "#000";
               ctx.fillStyle = color;
               ctx.strokeStyle = glowColor;
-              // ctx.lineWidth = 0.2;
 
               ctx.beginPath();
               ctx.arc(node.x!, node.y!, nodeSize, 0, 2 * Math.PI, false);
@@ -188,9 +189,10 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
               ctx.shadowBlur = 0;
 
               ctx.font = `${12 / globalScale}px Sans-Serif`;
-              ctx.textAlign = "center"; // 수평 중앙 정렬
-              ctx.textBaseline = "bottom"; // 수직 정렬을 아래로 설정
+              ctx.textAlign = "center";
+              ctx.textBaseline = "bottom";
               ctx.fillStyle = "white";
+
               const words = label.split(" ");
               let line1 = label;
               let line2 = "";
@@ -207,7 +209,7 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
                 ctx.fillText(
                   line2,
                   node.x!,
-                  node.y! + nodeSize + 5 + lineHeight
+                  node.y! + nodeSize + 5 + lineHeight,
                 );
               }
             }}
@@ -218,14 +220,13 @@ const ProsNConas: React.FC<ProsNConsProps> = ({ jsonData }) => {
               link.weight > 4
                 ? `rgba(${r}, ${g}, ${b}, 0.1)`
                 : link.weight > 3
-                ? `rgba(${r}, ${g}, ${b}, 0.3)`
-                : `rgba(${r}, ${g}, ${b}, 0.6)`
-            } // ✅ 링크 색상
+                  ? `rgba(${r}, ${g}, ${b}, 0.3)`
+                  : `rgba(${r}, ${g}, ${b}, 0.6)`
+            }
             nodeRelSize={nodeSize + 20}
             onNodeClick={handleNodeClick}
           />
 
-          {/* ✅ Player 컴포넌트 사용 */}
           {selectedNode && (
             <Player
               prosNcons={selectedNode.key}
