@@ -131,7 +131,7 @@ const Main = () => {
           style={{ cursor: "pointer" }}
         >
           <h1>
-            CLEF <span>[2025.01 - 현재]</span>
+            CLEF <span>[2025.05 - 2026.01]</span>
           </h1>
           <div className={styles.inner}>
             <div className={styles.projectLink}>
